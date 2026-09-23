@@ -2,7 +2,7 @@
 
 **English** | [中文](README.md)
 
-# Tide · 潮汐蒸馏
+# TIDE · Distillation
 
 <img src="assets/banner.png" alt="Tide" width="100%">
 
