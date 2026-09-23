@@ -180,7 +180,7 @@ v3是一段经历："我因为亲身经历了XX，所以遇到这类问题时本
 
 ```bash
 # 安装潮汐
-npx skills add Yeadon8888/tide-skill
+npx skills add jasonxxzhou/tide-skill
 
 # 蒸馏任何人
 > 用潮汐蒸馏一个查理·芒格
@@ -188,7 +188,7 @@ npx skills add Yeadon8888/tide-skill
 
 潮汐是开源的（MIT），基于女娲架构升级。
 
-代码在这里：https://github.com/Yeadon8888/tide-skill
+代码在这里：https://github.com/jasonxxzhou/tide-skill
 
 ---
 

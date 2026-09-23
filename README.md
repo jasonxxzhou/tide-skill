@@ -119,7 +119,7 @@ I suspect 收费会破坏这个过程。
 ## 安装
 
 ```bash
-npx skills add Yeadon8888/tide-skill
+npx skills add jasonxxzhou/tide-skill
 ```
 
 然后在 Claude Code 里：

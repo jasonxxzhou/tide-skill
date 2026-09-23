@@ -94,7 +94,7 @@ Want somebody else? Install Tide and ask it to distill that person.
 ## Installation
 
 ```bash
-npx skills add Yeadon8888/tide-skill
+npx skills add jasonxxzhou/tide-skill
 ```
 
 Then ask your skill-compatible coding agent:
