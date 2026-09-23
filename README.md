@@ -140,7 +140,8 @@ Step 7  交付
 |------|------|
 | `scripts/quality_check.py` | 12 项结构自检 |
 | `scripts/compile-prompt.py` | Skill → Web API system prompt（RCCF 格式压缩编译） |
-| `scripts/douyin_extractor.py` | 抖音视频提取（无水印/封面/音频/转写） |
+| `scripts/douyin_extractor.py` | 抖音视频提取（无水印/封面/音频/转写，云端转写版） |
+| `scripts/douyin_pipeline.py` | ⭐ 抖音视频一键流水线 v2（反爬兜底解析 + 本地免 Key 转写，一条命令出逐字稿） |
 
 ---
 
@@ -154,9 +155,10 @@ tide-skill/
 │   ├── extraction-framework.md     # 认知提取方法论
 │   ├── research-guide.md           # 调研文件格式规范
 │   ├── skill-template.md           # 生成 Skill 的模板
-│   └── douyin-implementation.md    # 视频提取技术细节
+│   └── douyin-implementation.md    # 视频提取技术细节（含 v2 流水线差异）
 ├── scripts/
-│   ├── douyin_extractor.py         # 抖音视频/口播稿提取
+│   ├── douyin_pipeline.py          # ⭐ 抖音视频 → 逐字稿 一键流水线（v2 加速版）
+│   ├── douyin_extractor.py         # 抖音视频/口播稿提取（旧版，云端转写）
 │   ├── quality_check.py            # 质量自检
 │   └── compile-prompt.py           # Prompt 编译器
 ├── examples/                       # Paul Graham / 阿德勒 蒸馏示例
@@ -166,12 +168,32 @@ tide-skill/
 
 ### 视频提取环境配置
 
+**v2 一键流水线（推荐，零 API Key 配置）：**
+
+```bash
+pip install requests                # faster-whisper 缺失时脚本自动安装
+# 系统依赖：ffmpeg、ffprobe
+python scripts/douyin_pipeline.py extract "https://v.douyin.com/xxx" -o ./output
+# → 自动：douyin.wtf 解析兜底 → 无水印下载 → 抽音频 → 本地 faster-whisper 转写 → 逐字稿落盘
+# → 逐字稿只落盘不回显，省时间省 Token；模型走 hf-mirror 镜像自动下载
+```
+
+**旧版云端转写（可选）：**
+
 ```bash
 pip install -r requirements.txt   # requests / brotli
 # 系统依赖：ffmpeg、ffprobe
 export DOUYIN_TRANSCRIBE_PROVIDER="siliconflow"   # 或 openai-compatible / none
 export DOUYIN_API_KEY="your-api-key"
 ```
+
+### 用户承诺与免责声明
+
+使用本工具（尤其是视频提取与内容蒸馏功能）即视为您承诺并同意：
+
+1. 您所提交的一切素材链接及内容（包括但不限于视频、文章、书籍）均为**您本人已依法获得原著作权人合法授权**使用的素材；
+2. 因您提交、使用、分发上述素材而引发的**任何版权纠纷及法律责任，均由使用者本人自行承担**，与本项目作者无关；
+3. 本工具提取内容仅供个人学习研究，请遵守平台用户协议与相关法律法规，请勿商用或搬运分发。
 
 ---
 

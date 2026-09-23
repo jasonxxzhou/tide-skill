@@ -95,7 +95,21 @@ description: |
 
 ### C2. 逐条提取视频数据
 
-对每条链接调用提取脚本（`scripts/douyin_extractor.py`）：
+**推荐：一键流水线脚本（`scripts/douyin_pipeline.py`，v2 加速版）**——反爬兜底 + 免 API Key 本地转写，一条命令出逐字稿：
+
+```bash
+python scripts/douyin_pipeline.py extract "https://v.douyin.com/xxx" -o ./output
+```
+
+一条龙完成：解析分享链接（douyin.wtf 解析 API 兜底抖音反爬）→ 下载无水印视频 → ffmpeg 抽取 16kHz 音频 → **本地 faster-whisper 转写（无需配置任何转写 API Key）** → 落盘带时间戳逐字稿（JSON + Markdown）。
+
+- 控制台只输出精简摘要，全文落盘——**省时间也省 Token**
+- 模型自动下载（国内默认 hf-mirror 镜像），并自动修复 Windows 下 HF 缓存 0 字节快照的坑
+- 依赖缺失时自动 pip 安装 faster-whisper
+- 常用变体：`--model base`（更快，质量略降）/ `-v` 保留视频文件 / `parse` 子命令仅拿元数据与直链 / `transcribe` 子命令转写已有音频
+- 转写速度参考：CPU int8 下约为音频时长的 0.5-1 倍（4 分钟视频约 2 分钟出稿）
+
+**旧版脚本（`scripts/douyin_extractor.py`）仍可用**，适合已配置云端转写 API 的用户：
 
 ```bash
 python scripts/douyin_extractor.py extract "https://v.douyin.com/xxx" -o ./output -v
@@ -103,13 +117,13 @@ python scripts/douyin_extractor.py extract "https://v.douyin.com/xxx" -o ./outpu
 
 脚本自动完成：解析分享链接 → 下载无水印视频 → ffmpeg 提取音频和封面 → 语音转写出完整口播文案 → 返回 JSON 数据。
 
-**环境要求**（详见 `references/douyin-implementation.md`）：
+**旧版环境要求**（详见 `references/douyin-implementation.md`）：
 - 转写环境变量：`DOUYIN_TRANSCRIBE_PROVIDER`（siliconflow / openai-compatible / none）+ `DOUYIN_API_KEY`
 - 系统依赖：ffmpeg / ffprobe
 - 只想先拿文案预览可先跑 `info` 命令（无需 API Key）
 - 单条视频提取约 1-3 分钟，批量链接逐条处理
 
-**转写失败兜底**：没有转写 API 或识别失败时，请用户手动补录口播稿——"反爬挡得住接口，挡不住贴进来的文字"。有标题 + 描述就能开始，口播稿有则更好。
+**转写失败兜底**：两个脚本都失败时，请用户手动补录口播稿——"反爬挡得住接口，挡不住贴进来的文字"。有标题 + 描述就能开始，口播稿有则更好。
 
 ### C3. 整理为调研文件
 
@@ -272,7 +286,7 @@ Skill 已生成：[path]/[person-name]-perspective/SKILL.md
 
 **蒸馏不等于认同。** 潮汐提取的是认知方式，不代表认同其观点。
 
-**视频提取合规**：提取抖音内容仅供学习研究，遵守平台协议与版权法规，勿商用搬运。
+**视频提取合规与用户承诺**：使用本 Skill 即视为用户承诺：所提交的一切素材链接及内容均为用户本人已依法获得原著作权人合法授权使用的素材；因提交、使用、分发上述素材引发的任何版权纠纷及法律责任均由使用者本人自行承担，与本项目作者无关。提取内容仅供学习研究，遵守平台协议与版权法规，勿商用搬运。
 
 ---
 
