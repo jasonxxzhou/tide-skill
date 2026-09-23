@@ -170,10 +170,7 @@ export DOUYIN_API_KEY="your-api-key"
 
 ---
 
-## 致谢
-
-- [douyin-video-extractor](https://github.com/lenslp/douyin-video-extractor)（MIT）— 视频博主蒸馏通道的提取内核
-- [女娲.skill](https://github.com/alchaincyf/nuwa-skill)（MIT）— 认知蒸馏方法论的先行者
+## 使用说明
 
 > 提取抖音内容仅供学习研究，请遵守平台协议与版权法规，勿商用搬运。
 

@@ -68,10 +68,7 @@ Step 3  Cognitive extraction (beliefs-with-origin-stories, decisions-with-retros
 Step 4  Summary confirmation → Step 5 Assemble → Step 6 QA (12 checks) → Step 7 Deliver
 ```
 
-## Credits
-
-- [douyin-video-extractor](https://github.com/lenslp/douyin-video-extractor) (MIT) — extraction core of the video-creator channel
-- [Nuwa.skill](https://github.com/alchaincyf/nuwa-skill) (MIT) — a pioneer of cognitive distillation
+## Notice
 
 > Extracting Douyin content is for learning and research only. Respect platform terms and copyright.
 

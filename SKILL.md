@@ -272,7 +272,7 @@ Skill 已生成：[path]/[person-name]-perspective/SKILL.md
 
 **蒸馏不等于认同。** 潮汐提取的是认知方式，不代表认同其观点。
 
-**视频提取合规**：提取抖音内容仅供学习研究，遵守平台协议与版权法规，勿商用搬运。视频提取能力基于开源项目 [douyin-video-extractor](https://github.com/lenslp/douyin-video-extractor)（MIT）。
+**视频提取合规**：提取抖音内容仅供学习研究，遵守平台协议与版权法规，勿商用搬运。
 
 ---
 

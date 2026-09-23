@@ -1,4 +1,8 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+# Portions Copyright (c) 2026 lens
+# Licensed under the MIT License: https://opensource.org/licenses/MIT
+
 """
 抖音视频内容提取脚本（Node.js 版本移植）
 
