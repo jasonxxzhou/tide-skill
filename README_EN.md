@@ -4,6 +4,9 @@
 
 # Tide · 潮汐蒸馏
 
+<img src="assets/banner.png" alt="Tide" width="100%">
+
+
 > *The waves rise and fall with the moon, keeping faith with a rhythm it never chose.*
 
 <br>
