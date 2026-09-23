@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>潮汐 · 潮汐蒸馏 — 把一个人的痕迹变成 AI 的思维方式</title>
+<style>
+  :root{
+    --bg:#0a1628; --bg2:#0d1f38; --card:#122843; --line:#1e3a5f;
+    --text:#e8f0f8; --dim:#8fa8c4; --accent:#4fd1c5; --accent2:#63b3ed; --gold:#f6c177;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:linear-gradient(180deg,var(--bg) 0%,var(--bg2) 100%);color:var(--text);
+    font-family:"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.8;overflow-x:hidden}
+  .hero{min-height:88vh;display:flex;flex-direction:column;justify-content:center;align-items:center;
+    text-align:center;padding:80px 24px 40px;position:relative}
+  .hero::after{content:"";position:absolute;bottom:0;left:0;right:0;height:120px;
+    background:linear-gradient(180deg,transparent,var(--bg2))}
+  .badge{display:inline-block;border:1px solid var(--accent);color:var(--accent);
+    border-radius:999px;padding:4px 18px;font-size:13px;letter-spacing:2px;margin-bottom:28px}
+  h1{font-size:clamp(42px,8vw,76px);font-weight:800;letter-spacing:6px;
+    background:linear-gradient(120deg,#e8f0f8,var(--accent) 60%,var(--accent2));
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:16px}
+  .sub{font-size:clamp(16px,2.6vw,22px);color:var(--dim);margin-bottom:8px}
+  .quote{font-size:14px;color:#5f7a99;margin-top:24px;font-style:italic}
+  .hero-img{width:min(880px,92vw);border-radius:16px;margin-top:44px;
+    box-shadow:0 20px 80px rgba(79,209,197,.15);border:1px solid var(--line)}
+  section{max-width:960px;margin:0 auto;padding:70px 24px}
+  .kicker{color:var(--accent);font-size:13px;letter-spacing:3px;margin-bottom:10px}
+  h2{font-size:clamp(26px,4vw,36px);margin-bottom:14px;font-weight:700}
+  .lead{color:var(--dim);max-width:640px}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin-top:36px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px;
+    transition:transform .25s,border-color .25s}
+  .card:hover{transform:translateY(-4px);border-color:var(--accent)}
+  .card .icon{font-size:30px;margin-bottom:12px}
+  .card h3{font-size:18px;margin-bottom:8px}
+  .card p{color:var(--dim);font-size:14px}
+  .card .tag{display:inline-block;margin-top:14px;font-size:12px;color:var(--accent);
+    border:1px solid var(--accent);border-radius:6px;padding:2px 10px}
+  .flow{margin-top:36px;background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:28px;font-family:Consolas,monospace;font-size:13px;color:var(--dim);overflow-x:auto}
+  .flow b{color:var(--accent)}
+  .install{margin-top:40px;background:#081020;border:1px solid var(--line);border-radius:12px;
+    padding:18px 24px;font-family:Consolas,monospace;font-size:15px;color:var(--accent);
+    display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+  .install code{white-space:nowrap}
+  .btn{background:linear-gradient(120deg,var(--accent),var(--accent2));color:#081020;font-weight:700;
+    border:none;border-radius:8px;padding:10px 22px;font-size:14px;cursor:pointer;text-decoration:none;
+    display:inline-block}
+  .steps{counter-reset:s;margin-top:36px;display:grid;gap:14px}
+  .step{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 22px;
+    display:flex;gap:16px;align-items:flex-start}
+  .step::before{counter-increment:s;content:counter(s);flex:0 0 34px;height:34px;border-radius:50%;
+    background:linear-gradient(120deg,var(--accent),var(--accent2));color:#081020;font-weight:800;
+    display:flex;align-items:center;justify-content:center}
+  .step h4{font-size:15px;margin-bottom:2px}
+  .step p{color:var(--dim);font-size:13.5px}
+  footer{text-align:center;padding:50px 24px 70px;color:#5f7a99;font-size:13px}
+  footer a{color:var(--accent);text-decoration:none}
+  .wave{display:block;width:100%;height:60px}
+  @media(max-width:600px){.hero{min-height:70vh}}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <span class="badge">OPEN SOURCE · MIT</span>
+  <h1>潮汐 · 潮汐蒸馏</h1>
+  <p class="sub">把一个人留下的痕迹，变成 AI 可运行的思维方式</p>
+  <p class="quote">「涛之起也，随月盛衰。」——《论衡·书虚》</p>
+  <img class="hero-img" src="banner.png" alt="潮汐 banner">
+</div>
+
+<section>
+  <p class="kicker">WHY "TIDE"</p>
+  <h2>浪花人人看得见，引力只有潮汐懂</h2>
+  <p class="lead">一篇文章、一条视频、一句金句，都只是浪花。<b style="color:var(--text)">反复出现的口癖、一以贯之的取舍、承认过的失败、没解决过的矛盾</b>——才是驱动一个人的引力。潮汐提取的不是"他说了什么"（模型早就知道），而是"他为什么这样想"（只存在于具体素材中）。</p>
+
+  <div class="cards">
+    <div class="card">
+      <div class="icon">👤</div>
+      <h3>人物蒸馏</h3>
+      <p>丢给人名、文章、访谈或 PDF，自动 6 路网搜采集，蒸出该人物的思维 Skill。</p>
+      <span class="tag">文章 / 访谈</span>
+    </div>
+    <div class="card">
+      <div class="icon">📖</div>
+      <h3>书籍蒸馏</h3>
+      <p>丢进整本书（PDF / EPUB / TXT），分块扫描 + 7 级价值清单精读，提取作者的认知上下文。</p>
+      <span class="tag">整本书</span>
+    </div>
+    <div class="card" style="border-color:var(--gold)">
+      <div class="icon">📱</div>
+      <h3>视频博主蒸馏</h3>
+      <p>贴几条抖音爆款视频链接：自动下载无水印视频、转写完整口播稿、拆解 Hook 结构，蒸出"博主分身"。</p>
+      <span class="tag">核心特色 ⭐</span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <p class="kicker">PIPELINE</p>
+  <h2>三条潮路，一个汇合点</h2>
+  <div class="flow">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;┌─ <b>路线 A · 人物蒸馏</b> ──→ 文章/访谈/6路网搜 ──┐<br>
+    用户输入 ──→ <b>Step 0 分流</b> ─┼─ <b>路线 B · 书籍蒸馏</b> ──→ 整本书分块精读 ────┼──→ 认知提取 → 组装 → 质检<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─ <b>路线 C · 视频博主蒸馏</b> → 抖音爆款视频提取 ──┘
+  </div>
+
+  <div class="steps">
+    <div class="step"><div><h4>素材采集</h4><p>上传读取 / 6 路网搜 / 视频提取（无水印视频 → 音频 → 语音转写口播稿）</p></div></div>
+    <div class="step"><div><h4>认知提取（三路汇合）</h4><p>信念形成故事 · 真实决策与反思 · 本人承认的失败 · 内在矛盾 · 认知边界 · 第一人称思维习惯 · 极简表达 DNA</p></div></div>
+    <div class="step"><div><h4>组装 + 质检</h4><p>第一人称认知上下文模板，四个铁律，12 项结构自检</p></div></div>
+    <div class="step"><div><h4>交付使用</h4><p>得到 [人名]-perspective Skill，让 AI 用那个人的方式思考、分析、写文案</p></div></div>
+  </div>
+
+  <div class="install">
+    <code>npx skills add jasonxxzhou/tide-skill</code>
+    <a class="btn" href="https://github.com/jasonxxzhou/tide-skill" target="_blank">GitHub 仓库 →</a>
+  </div>
+</section>
+
+<section>
+  <p class="kicker">EXAMPLE</p>
+  <h2>蒸好之后怎么用</h2>
+  <div class="flow">
+    <b>></b> 用芒格的方式帮我分析这笔投资<br>
+    <b>></b> 切换到纳瓦尔，帮我看这个创业想法<br>
+    <b>></b> 用这个博主的口吻，给这条视频写个文案
+  </div>
+  <p class="lead" style="margin-top:20px">每个生成的 Skill 都标注诚实边界：基于有限素材、不代表本人立场、哪些是推断——让 AI 知道自己不知道什么。</p>
+</section>
+
+<footer>
+  <p>涛之起也，随月盛衰 · 痕迹起落之间，读出思维的引力</p>
+  <p style="margin-top:8px"><a href="https://github.com/jasonxxzhou/tide-skill" target="_blank">github.com/jasonxxzhou/tide-skill</a> · MIT License · 提取抖音内容仅供学习研究</p>
+</footer>
+
+</body>
+</html>
